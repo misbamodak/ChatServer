@@ -43,4 +43,12 @@ public class ChatController {
     public List<ChatMessage> getChatHistory() {
         return chatMessageRepository.findAll();
     }
+
+    @DeleteMapping("/delete")
+    public String deleteMessage(@RequestBody Map<String, Long> requestBody) {
+        Long messageId = requestBody.get("messageId");
+        chatMessageRepository.deleteById(messageId);
+        return "Message deleted successfully!";
+    }
+
 }
