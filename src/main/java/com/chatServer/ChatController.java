@@ -1,5 +1,6 @@
 package com.chatServer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,10 +10,11 @@ import java.util.Map;
 @RequestMapping("/chat")
 public class ChatController {
 
-    private final ChatRoom chatRoom;
+    private final ChatMessageRepository chatMessageRepository;
 
-    public ChatController(ChatRoom chatRoom) {
-        this.chatRoom = chatRoom;
+    @Autowired
+    public ChatController(ChatMessageRepository chatMessageRepository) {
+        this.chatMessageRepository = chatMessageRepository;
     }
 
     @PostMapping("/login")
@@ -33,12 +35,12 @@ public class ChatController {
         String username = messageData.get("username");
         String message = messageData.get("message");
 
-        chatRoom.addMessage(username, message);
+        chatMessageRepository.save(new ChatMessage(username, message));
         return "Message sent successfully!";
     }
 
     @GetMapping("/history")
-    public List<String> getChatHistory() {
-        return chatRoom.getAllMessages();
+    public List<ChatMessage> getChatHistory() {
+        return chatMessageRepository.findAll();
     }
 }
