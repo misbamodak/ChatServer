@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "14e39f7b-15a5-4bf5-8eb9-8cbddcb5ee64",
+		"name": "ChatServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2563022"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"username\": \"admin\", \"password\": \"admin123\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/chat/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"chat",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendMesasges",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"username\": \"admin\", \"message\": \"Hello, world!\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/chat/send",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"chat",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChatHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/chat/history",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"chat",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMesasge",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"messageId\": 1 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/chat/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"chat",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
